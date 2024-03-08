@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "BackOffice";
+}
+
+<div class="text-center mt-5">
+    <div class="row row-cols-4">
+        <div class="col">
+            <a class="oceanBtn me-5" asp-controller="Dipendente" asp-action="Index">Visualizza tutti i dipendenti</a>
+        </div>
+        <div class="col">
+            <a class="oceanBtn me-5" asp-controller="Cliente" asp-action="Index">Visualizza tutti i clienti</a>
+        </div>
+        <div class="col">
+            <a class="oceanBtn" asp-controller="Prenotazione" asp-action="Index">Visualizza tutte le prenotazioni</a>
+        </div>
+        <div class="col">
+            <a class="oceanBtn" asp-controller="Servizio" asp-action="Index">Visualizza tutti i servizi</a>
+        </div>
+        <div class="col">
+            <a class="oceanBtn" asp-controller="Home" asp-action="Async">Async</a>
+        </div>
+    </div>
+</div>

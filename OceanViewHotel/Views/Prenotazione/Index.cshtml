@@ -1,0 +1,79 @@
+﻿@model IEnumerable<OceanViewHotel.Models.Prenotazione>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataPrenotazione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCheckOut)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.CodiceFiscale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pensione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Camera.TipologiaCamera)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Caparra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tariffa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataPrenotazione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCheckIn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCheckOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.CodiceFiscale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pensione.Descrizione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Camera.TipologiaCamera.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Caparra)€
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tariffa)€
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Async";
+}
+<div id="divCodice">
+    <form id="submitForm">
+        <label class="control-label"></label>
+        <input id="inputValue" placeholder="Codice Fiscale"/>
+        <div class="form-group">
+            <input type="submit" value="FetchByCodiceFiscale" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<div id="divPensioni">
+</div>
+
+<script>
+    $("submitForm").submit()
+    var codiceFiscale = ("#inputValue").val();
+    async function FetchByCodiceFiscale(codiceFiscale) {
+        try {
+            const response = await fetch('/Home/FetchByCodiceFiscale?codiceFiscale=' + codiceFiscale);
+
+            if (!response.ok) {
+                throw new Error('Errore nella richiesta fetch');
+            }
+
+            const data = await response.json();
+            const container = $('#divCodice');
+            container.empty();
+            container.append(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    async function FetchTotalePensioniComplete() {
+        try {
+            const response = await fetch('/Home/FetchTotalePensioniComplete');
+            const data = await response.json();
+
+            const container = $('#divPensioni');
+            container.empty();
+            container.append('<h3>Totale Pensioni Complete: ' + data + '</h3>');
+        }
+        catch (error) {
+            console.error('Error:', error);
+        }
+    }
+</script>
