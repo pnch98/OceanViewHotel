@@ -39,7 +39,7 @@ namespace OceanViewHotel.Controllers
             return View();
         }
 
-        public IActionResult Async()
+        public IActionResult AsyncPage()
         {
             return View();
         }
