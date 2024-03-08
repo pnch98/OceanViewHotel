@@ -1,21 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Async";
 }
-<div id="divCodice">
-    <form id="submitForm">
-        <label class="control-label"></label>
-        <input id="inputValue" placeholder="Codice Fiscale" />
+<div id="divCodice" class="mb-5">
+        <label class="control-label">Inserisci codice fiscale</label>
+        <input id="inputValue" class="mb-3" placeholder="Codice Fiscale" />
         <div class="form-group">
-            <input type="submit" value="FetchByCodiceFiscale" class="btn btn-primary" />
+            <input type="button" id="btnSearch" value="Cerca" class="oceanBtn" />
         </div>
-    </form>
+
 </div>
 <div id="divPensioni">
 </div>
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-        $("#submitForm").submit(function (event) {
+        $("#btnSearch").submit(function (event) {
             event.preventDefault(); // Evita il comportamento di default del form (refresh della pagina)
 
             var codiceFiscale = $("#inputValue").val();
@@ -35,6 +34,7 @@
             }
 
             const data = await response.json();
+            console.log(data);
             const container = $('#divCodice');
             container.empty();
             container.append(data);

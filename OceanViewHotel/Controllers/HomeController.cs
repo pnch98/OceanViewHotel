@@ -52,27 +52,6 @@ namespace OceanViewHotel.Controllers
                 var listaPrenotazioni = await _context
                     .Prenotazioni.Include(c => c.Cliente).Include(c => c.Servizi).ThenInclude(c => c.ServPerPren)
                     .Where(c => c.Cliente.CodiceFiscale == codiceFiscale)
-                    .Select(p => new
-                    {
-                        p.Id,
-                        p.DataCheckIn,
-                        p.DataCheckOut,
-                        p.Pensione.Descrizione,
-                        Cliente = new
-                        {
-                            p.Cliente.Nome,
-                            p.Cliente.Cognome,
-                            p.Cliente.CodiceFiscale,
-                            p.Cliente.Citta,
-                            p.Cliente.Email,
-                            p.Cliente.Cellulare
-                        },
-                        Servizi = p.Servizi.Select(s => new
-                        {
-                            s.Id,
-                            s.ServPerPren.Descrizione
-                        })
-                    })
                     .ToListAsync();
                 return Json(listaPrenotazioni);
             }
